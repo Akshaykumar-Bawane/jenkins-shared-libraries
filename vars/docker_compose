@@ -1,0 +1,11 @@
+def call(){
+                 sh '''
+                 set +e   # disable exit on error
+                 docker compose down || true
+                 docker compose up -d || true
+                 docker ps
+                 docker logs django_cont || true
+                 set -e   # re-enable exit on error
+              '''
+
+}
